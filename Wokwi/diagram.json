@@ -1,36 +1,36 @@
 {
   "version": 1,
-  "author": "عبدالرحمن اشرف",
+  "author": "Shruthi Shruthi",
   "editor": "wokwi",
   "parts": [
     {
       "type": "board-esp32-devkit-c-v4",
       "id": "esp",
-      "top": 0,
-      "left": 0,
+      "top": -9.6,
+      "left": 52.84,
       "attrs": { "env": "micropython-20260406-v1.28.0" }
     },
-    { "type": "wokwi-dht22", "id": "dht1", "top": -124.5, "left": -120.6, "attrs": {} },
-    { "type": "wokwi-gas-sensor", "id": "gas1", "top": 146.7, "left": -223.4, "attrs": {} },
+    { "type": "wokwi-gas-sensor", "id": "gas1", "top": 146.7, "left": -175.4, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -38.1, "left": -72.6, "attrs": {} },
     {
       "type": "wokwi-buzzer",
       "id": "bz1",
-      "top": -122.4,
-      "left": 1.8,
+      "top": 2.4,
+      "left": 203.4,
       "attrs": { "volume": "0.1" }
     }
   ],
   "connections": [
     [ "esp:TX", "$serialMonitor:RX", "", [] ],
     [ "esp:RX", "$serialMonitor:TX", "", [] ],
-    [ "dht1:VCC", "esp:3V3", "red", [ "v0" ] ],
-    [ "dht1:GND", "esp:GND.2", "black", [ "v0" ] ],
-    [ "esp:4", "dht1:SDA", "green", [ "h0" ] ],
-    [ "esp:5V", "gas1:VCC", "red", [ "h0" ] ],
-    [ "esp:GND.3", "gas1:GND", "black", [ "h0" ] ],
-    [ "esp:35", "gas1:AOUT", "green", [ "h0" ] ],
-    [ "esp:25", "bz1:2", "green", [ "v0" ] ],
-    [ "esp:GND.1", "bz1:1", "black", [ "h0" ] ]
+    [ "gas1:VCC", "esp:5V", "red", [ "h0" ] ],
+    [ "gas1:GND", "esp:CMD", "black", [ "h0" ] ],
+    [ "dht1:VCC", "esp:5V", "red", [ "v67.2", "h48", "v48" ] ],
+    [ "dht1:GND", "esp:CMD", "black", [ "v57.6", "h28.8", "v48" ] ],
+    [ "gas1:AOUT", "esp:35", "green", [ "h67.2", "v-96", "h-9.6" ] ],
+    [ "dht1:SDA", "esp:4", "green", [ "v-19.2", "h67.3", "v-86.4", "h172.8", "v163.2", "h-9.6" ] ],
+    [ "bz1:1", "esp:GND.2", "green", [ "v0" ] ],
+    [ "bz1:2", "esp:25", "green", [ "v0" ] ]
   ],
   "dependencies": {}
 }
