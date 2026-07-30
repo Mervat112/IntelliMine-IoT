@@ -23,7 +23,7 @@ The ESP32 sends sensor readings to an MQTT broker, and Node-RED displays the dat
 
 ## Wokwi Simulation
 
-https://wokwi.com/projects/470916640293728257
+https://wokwi.com/projects/470969515563807745
 
 ## MQTT Topic
 
