@@ -1,4 +1,4 @@
-from machine import Pin, ADC
+from machine import Pin, ADC, PWM
 import network
 import dht
 import time
@@ -10,14 +10,15 @@ PASSWORD = ""
 
 BROKER = "broker.hivemq.com"
 CLIENT_ID = "ESP32_IntelliMine_Node"
-TOPIC = b"IntelliMine/Data"
+TOPIC = b"Abdelrahman_IntelliMine/Data"
 
 dht_sensor = dht.DHT22(Pin(4))
 
 gas_sensor = ADC(Pin(35))
 gas_sensor.atten(ADC.ATTN_11DB)
 
-buzzer = Pin(25, Pin.OUT)
+buzzer = PWM(Pin(25))
+buzzer.duty(0)
 
 def connect_wifi():
     wifi = network.WLAN(network.STA_IF)
@@ -56,10 +57,11 @@ try:
 
         if gas > 3000:
             status = "DANGER"
-            buzzer.on()
+            buzzer.freq(1000)
+            buzzer.duty(512)
         else:
             status = "SAFE"
-            buzzer.off()
+            buzzer.duty(0)
 
         data = {
             "temperature": temperature,
