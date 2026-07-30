@@ -1,0 +1,228 @@
+[
+    {
+        "id": "e804442513727d66",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "52bc13a0f8948ae4",
+        "type": "mqtt in",
+        "z": "e804442513727d66",
+        "name": "",
+        "topic": "Abdelrahman_IntelliMine/Data",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "4484ef26b7ce495f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 240,
+        "y": 240,
+        "wires": [
+            [
+                "714f11411d6f87e1",
+                "29abd17718f1c99b",
+                "c6913c823d058609"
+            ]
+        ]
+    },
+    {
+        "id": "714f11411d6f87e1",
+        "type": "function",
+        "z": "e804442513727d66",
+        "name": "temp",
+        "func": "msg.payload = msg.payload.temperature;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 180,
+        "wires": [
+            [
+                "d10ad80990740f6b"
+            ]
+        ]
+    },
+    {
+        "id": "29abd17718f1c99b",
+        "type": "function",
+        "z": "e804442513727d66",
+        "name": "gas",
+        "func": "msg.payload = msg.payload.gas;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 260,
+        "wires": [
+            [
+                "2ae031616ffab574"
+            ]
+        ]
+    },
+    {
+        "id": "c6913c823d058609",
+        "type": "function",
+        "z": "e804442513727d66",
+        "name": "mode",
+        "func": "msg.payload = msg.payload.status;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 360,
+        "wires": [
+            [
+                "69ecd099a9987057"
+            ]
+        ]
+    },
+    {
+        "id": "2ae031616ffab574",
+        "type": "ui_gauge",
+        "z": "e804442513727d66",
+        "name": "gas",
+        "group": "247daae0219ef315",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "4000",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 770,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "69ecd099a9987057",
+        "type": "ui_text",
+        "z": "e804442513727d66",
+        "group": "247daae0219ef315",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "text",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 770,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "d10ad80990740f6b",
+        "type": "ui_gauge",
+        "z": "e804442513727d66",
+        "name": "temp",
+        "group": "247daae0219ef315",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 770,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "4484ef26b7ce495f",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "247daae0219ef315",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "7676b5cb63367bca",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7676b5cb63367bca",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "9c79e96ac80bf9a9",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]
